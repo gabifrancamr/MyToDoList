@@ -17,7 +17,7 @@ interface InfoTasks {
 export function App() {
   const [inputNewTask, setInputNewTask] = useState('')
   const [tasks, setTasks] = useState<InfoTasks[]>([])
-  const [isChecked, setIsChecked] = useState(false)
+ 
 
   function handleInputNewTaskChange(e:ChangeEvent<HTMLInputElement>) {
     setInputNewTask(e.target.value)
@@ -37,8 +37,10 @@ export function App() {
     }
   }
 
-  function handleChangeChecked() {
-    setIsChecked(!isChecked)
+  function handleChangeChecked(taskId: string) {
+    setTasks(
+      tasks.map((task) => task.id === taskId ? { ...task, isChecked: !task.isChecked } : task)
+    )
   }
 
   
@@ -70,9 +72,9 @@ export function App() {
             <div className={styles.allTasks}>
               {tasks.map((task) => {
                 return (
-                  <div className={styles.taskBox} id={task.id} >
-                    <div className={styles.clickBox} onClick={handleChangeChecked}>
-                      <input className={styles.taskRadio} type="radio" id={task.id} checked={isChecked} />
+                  <div className={styles.taskBox} key={task.id} >
+                    <div className={styles.clickBox} onChange={() => handleChangeChecked(task.id)}>
+                      <input className={styles.taskRadio} type="checkbox" id={task.id} checked={task.isChecked} />
                     <label className={styles.taskContent} htmlFor={task.id}>{task.task}</label>
                     </div>
                     
