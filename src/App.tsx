@@ -10,12 +10,13 @@ import { ChangeEvent, useState } from 'react'
 
 interface InfoTasks {
   task: string,
-  
+  id: string,
+  isChecked: boolean
 }
 
 export function App() {
   const [inputNewTask, setInputNewTask] = useState('')
-  const [tasks, setTasks] = useState<string[]>([])
+  const [tasks, setTasks] = useState<InfoTasks[]>([])
   const [isChecked, setIsChecked] = useState(false)
 
   function handleInputNewTaskChange(e:ChangeEvent<HTMLInputElement>) {
@@ -24,7 +25,12 @@ export function App() {
 
   function handleCreateNewTask() {
     if(inputNewTask) {
-      setTasks([...tasks, inputNewTask])
+      const newTask:InfoTasks = {
+        id: uuidv4(),
+        task: inputNewTask,
+        isChecked: false
+      }
+      setTasks((state) => [...state, newTask])
       setInputNewTask("")
     } else {
       alert("Digite alguma tarefa!")
@@ -63,12 +69,11 @@ export function App() {
           ) : (
             <div className={styles.allTasks}>
               {tasks.map((task) => {
-                const uniId = uuidv4()
                 return (
-                  <div className={styles.taskBox} >
+                  <div className={styles.taskBox} id={task.id} >
                     <div className={styles.clickBox} onClick={handleChangeChecked}>
-                      <input className={styles.taskRadio} type="radio" id={uniId} checked={isChecked} />
-                    <label className={styles.taskContent} htmlFor={uniId}>{task}</label>
+                      <input className={styles.taskRadio} type="radio" id={task.id} checked={isChecked} />
+                    <label className={styles.taskContent} htmlFor={task.id}>{task.task}</label>
                     </div>
                     
                     <Trash />
