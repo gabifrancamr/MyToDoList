@@ -1,0 +1,48 @@
+.mainContent {
+    max-width: 46rem;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.newTask{
+    display: flex;
+    gap: 0.5rem;
+    transform: translateY(-50%);
+}
+
+.newTask input {
+    width: 100%;
+    background-color: var(--gray-500);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--gray-700);
+    font-size: 1rem;
+    color: var(--gray-100);
+}
+
+.newTask input:focus {
+    border: 1px solid var(--purple-dark);
+}
+
+.newTaskButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: var(--blue-dark);
+    border: none;
+    color: var(--gray-100);
+    gap: 0.4em;
+    cursor: pointer;
+}
+
+.newTaskButton span {
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.areaTasks {
+    margin-top: 2rem;
+}

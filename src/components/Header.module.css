@@ -1,0 +1,21 @@
+.header {
+    background-color: var(--gray-700);
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.headerName {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.to {
+    color: var(--blue);
+}
+
+.do {
+    color: var(--purple-dark);
+}
