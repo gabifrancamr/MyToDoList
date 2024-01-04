@@ -71,6 +71,7 @@ export function App() {
             placeholder="Adicione uma nova tarefa"
             value={inputNewTask}
             onChange={handleInputNewTaskChange}
+            id={uuidv4()}
           />
           <button
             className={styles.newTaskButton}
