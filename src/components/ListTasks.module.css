@@ -24,7 +24,7 @@
     border-radius: 50%;
 }
 
-.taskRadio:checked {
+.taskRadio:checked, .inputChecked {
     background-color: var(--purple-dark); 
     border: 1px solid var(--purple-dark);
     background-image: url(../assets/Vector.png);

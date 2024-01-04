@@ -30,16 +30,19 @@ export function ListTasks({
 
   return (
     <div className={styles.taskBox} id={id}>
-      <div className={styles.clickBox} onClick={changeChecked}>
+      <div className={styles.clickBox} >
+        
         <input
-          className={styles.taskRadio}
+          className={`${styles.taskRadio} ${isChecked ? styles.inputChecked : ""}`}
           type="checkbox"
           id={id}
           defaultChecked={isChecked}
+          onChange={changeChecked}
         />
         <label
           className={`${styles.taskContent} ${isChecked ? styles.checked : ""}`}
           htmlFor={id}
+          onClick={changeChecked}
         >
           {task}
         </label>
