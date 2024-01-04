@@ -35,7 +35,7 @@ export function ListTasks({
           className={styles.taskRadio}
           type="checkbox"
           id={id}
-          checked={isChecked}
+          defaultChecked={isChecked}
         />
         <label
           className={`${styles.taskContent} ${isChecked ? styles.checked : ""}`}
