@@ -1,0 +1,60 @@
+.taskBox {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: var(--gray-500);
+    border-radius: 8px;
+}
+
+.clickBox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 0.875rem;
+}
+
+.taskRadio {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 1px solid var(--blue);
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.taskRadio:checked {
+    background-color: var(--purple-dark); 
+    border: 1px solid var(--purple-dark);
+    background-image: url(../assets/Vector.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.taskContent {
+    flex: 1;
+    cursor: pointer;
+    width: 100%;
+    margin: 0 1rem;
+    color: var(--gray-100);
+    line-height: 1.4;
+}
+
+.checked {
+    text-decoration: line-through;
+    color: var(--gray-300);
+}
+
+.taskBox + .taskBox {
+    margin: 0.75rem 0;
+}
+
+.trash {
+    color: var(--gray-300);
+    cursor: pointer;
+}
+
+.trash:hover {
+    color: var(--danger);
+}

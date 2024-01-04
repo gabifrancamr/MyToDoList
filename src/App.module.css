@@ -52,35 +52,3 @@
     margin-top: 1.5rem;
 }
 
-.taskBox {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
-    background-color: var(--gray-500);
-    border-radius: 8px;
-}
-
-.clickBox {
-    display: flex;
-    cursor: pointer;
-    width: 100%;
-}
-
-.taskRadio[type="radio"] {
-    border: 1px solid var(--blue);
-    background-color: transparent;
-    width: 1rem;
-    height: 1rem;
-    cursor: pointer;
-}
-
-
-.taskContent {
-    flex: 1;
-    cursor: pointer;
-    width: 100%;
-}
-
-.taskBox + .taskBox {
-    margin: 0.75rem 0;
-}
