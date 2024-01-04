@@ -18,6 +18,7 @@ interface InfoTasks {
 export function App() {
   const [inputNewTask, setInputNewTask] = useState("");
   const [tasks, setTasks] = useState<InfoTasks[]>([]);
+  const [totalChecked, setTotalChecked] = useState<string[]>([])
 
   function handleInputNewTaskChange(e: ChangeEvent<HTMLInputElement>) {
     setInputNewTask(e.target.value);
@@ -43,6 +44,8 @@ export function App() {
         task.id === taskId ? { ...task, isChecked: !task.isChecked } : task
       )
     );
+
+    
   }
 
   function deleteTask(id: string) {
@@ -73,7 +76,7 @@ export function App() {
         </div>
 
         <div className={styles.areaTasks}>
-          <ListHeader />
+          <ListHeader allTasks={tasks.length} />
 
           {tasks.length === 0 ? (
             <WithoutTasks />
