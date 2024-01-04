@@ -18,7 +18,7 @@ interface InfoTasks {
 export function App() {
   const [inputNewTask, setInputNewTask] = useState("");
   const [tasks, setTasks] = useState<InfoTasks[]>([]);
-  const [totalChecked, setTotalChecked] = useState<string[]>([])
+  const [countCompletedTasks, setCountCompletedTasks] = useState(0)
 
   function handleInputNewTaskChange(e: ChangeEvent<HTMLInputElement>) {
     setInputNewTask(e.target.value);
@@ -39,19 +39,22 @@ export function App() {
   }
 
   function handleChangeChecked(taskId: string) {
-    setTasks(
-      tasks.map((task) =>
-        task.id === taskId ? { ...task, isChecked: !task.isChecked } : task
-      )
-    );
+    setTasks((prevTasks) => {
+      const updatedTasks = prevTasks.map((task) => task.id === taskId ? {...task, isChecked: !task.isChecked} : task)
 
-    
+      setCountCompletedTasks(updatedTasks.filter((task) => task.isChecked).length)
+  
+      return updatedTasks
+    });
+  
   }
 
   function deleteTask(id: string) {
-    const newTasks = tasks.filter((task) => task.id !== id)
+    const newTasks = tasks.filter((task) => task.id !== id);
 
-    setTasks(newTasks)
+    setTasks(newTasks);
+
+    setCountCompletedTasks(newTasks.filter((task) => task.isChecked).length)
   }
 
   return (
@@ -76,7 +79,7 @@ export function App() {
         </div>
 
         <div className={styles.areaTasks}>
-          <ListHeader allTasks={tasks.length} />
+          <ListHeader allTasks={tasks.length} completedTasks={countCompletedTasks}/>
 
           {tasks.length === 0 ? (
             <WithoutTasks />

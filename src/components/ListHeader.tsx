@@ -1,10 +1,11 @@
 import styles from './ListHeader.module.css'
 
 interface ListHeaderProps {
-    allTasks: number
+    allTasks: number,
+    completedTasks: number
 }
 
-export function ListHeader({allTasks}: ListHeaderProps) {
+export function ListHeader({allTasks, completedTasks}: ListHeaderProps) {
     return (
         <div className={styles.listHeader}>
             <div className={styles.tarefas}>
@@ -16,7 +17,7 @@ export function ListHeader({allTasks}: ListHeaderProps) {
                 {allTasks === 0 ? (
                     <span className={styles.count}>0</span>
                 ): (
-                    <span className={styles.count}><span>0</span> de <span>{allTasks}</span></span>
+                    <span className={styles.count}><span>{completedTasks}</span> de <span>{allTasks}</span></span>
                 )}
             </div>
         </div>

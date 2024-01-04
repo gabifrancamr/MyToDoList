@@ -30,7 +30,7 @@ export function ListTasks({
 
   return (
     <div className={styles.taskBox} id={id}>
-      <div className={styles.clickBox} onChange={changeChecked}>
+      <div className={styles.clickBox} onClick={changeChecked}>
         <input
           className={styles.taskRadio}
           type="checkbox"
