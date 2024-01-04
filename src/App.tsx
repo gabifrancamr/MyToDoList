@@ -18,7 +18,7 @@ interface InfoTasks {
 export function App() {
   const [inputNewTask, setInputNewTask] = useState("");
   const [tasks, setTasks] = useState<InfoTasks[]>([]);
-  const [countCompletedTasks, setCountCompletedTasks] = useState(0)
+  const [countCompletedTasks, setCountCompletedTasks] = useState(0);
 
   function handleInputNewTaskChange(e: ChangeEvent<HTMLInputElement>) {
     setInputNewTask(e.target.value);
@@ -40,13 +40,16 @@ export function App() {
 
   function handleChangeChecked(taskId: string) {
     setTasks((prevTasks) => {
-      const updatedTasks = prevTasks.map((task) => task.id === taskId ? {...task, isChecked: !task.isChecked} : task)
+      const updatedTasks = prevTasks.map((task) =>
+        task.id === taskId ? { ...task, isChecked: !task.isChecked } : task
+      );
 
-      setCountCompletedTasks(updatedTasks.filter((task) => task.isChecked).length)
-  
-      return updatedTasks
+      setCountCompletedTasks(
+        updatedTasks.filter((task) => task.isChecked).length
+      );
+
+      return updatedTasks;
     });
-  
   }
 
   function deleteTask(id: string) {
@@ -54,7 +57,7 @@ export function App() {
 
     setTasks(newTasks);
 
-    setCountCompletedTasks(newTasks.filter((task) => task.isChecked).length)
+    setCountCompletedTasks(newTasks.filter((task) => task.isChecked).length);
   }
 
   return (
@@ -79,7 +82,10 @@ export function App() {
         </div>
 
         <div className={styles.areaTasks}>
-          <ListHeader allTasks={tasks.length} completedTasks={countCompletedTasks}/>
+          <ListHeader
+            allTasks={tasks.length}
+            completedTasks={countCompletedTasks}
+          />
 
           {tasks.length === 0 ? (
             <WithoutTasks />
@@ -87,16 +93,14 @@ export function App() {
             <div className={styles.allTasks}>
               {tasks.map((task) => {
                 return (
-                  <>
-                    <ListTasks
-                      key={task.id}
-                      id={task.id}
-                      task={task.task}
-                      isChecked={task.isChecked}
-                      onHandleChangeChecked={handleChangeChecked}
-                      onDeleteTask={deleteTask}
-                    />
-                  </>
+                  <ListTasks
+                    key={task.id}
+                    id={task.id}
+                    task={task.task}
+                    isChecked={task.isChecked}
+                    onHandleChangeChecked={handleChangeChecked}
+                    onDeleteTask={deleteTask}
+                  />
                 );
               })}
             </div>
