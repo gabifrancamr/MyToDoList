@@ -48,7 +48,10 @@ export function ListTasks({
         </label>
       </div>
 
-      <Trash className={styles.trash} size={20} onClick={handleDeleteTask}/>
+      <button className={styles.buttonTrash} onClick={handleDeleteTask}>
+        <Trash className={styles.trash} size={16} />
+      </button>
+      
     </div>
   );
 }
