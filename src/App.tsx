@@ -2,6 +2,7 @@ import { Header } from "./components/Header";
 import { PlusCircle } from "phosphor-react";
 import { v4 as uuidv4 } from "uuid";
 import "./global.module.css";
+import "./index.css"
 
 import styles from "./App.module.css";
 import { ListHeader } from "./components/ListHeader";
@@ -63,7 +64,7 @@ export function App() {
   return (
     <div>
       <Header />
-
+      
       <section className={styles.mainContent}>
         <div className={styles.newTask}>
           <input
