@@ -1,6 +1,6 @@
 Concluí o desafio 1 - Praticando os conceitos do ReactJS 🥳
 
-link do projeto: https://gabifrancamr.github.io/01-desafio-toDoList/
+link do projeto: https://gabifrancamr.github.io/MyToDoList/
 
 Nesse desafio, desenvolvi uma aplicação de controle de tarefas no estilo to-do list, que contém as seguintes funcionalidades: Adicionar uma nova tarefa, Marcar e desmarcar uma tarefa como concluída, Remover uma tarefa da listagem e Mostrar o progresso de conclusão das tarefas
 
