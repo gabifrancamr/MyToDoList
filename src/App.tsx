@@ -7,7 +7,7 @@ import "./index.css";
 import styles from "./App.module.css";
 import { ListHeader } from "./components/ListHeader";
 import { WithoutTasks } from "./components/WithoutTasks";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { ListTasks } from "./components/ListTasks";
 
 interface InfoTasks {
@@ -18,7 +18,10 @@ interface InfoTasks {
 
 export function App() {
   const [inputNewTask, setInputNewTask] = useState("");
-  const [tasks, setTasks] = useState<InfoTasks[]>([]);
+  const [tasks, setTasks] = useState<InfoTasks[]>(() => {
+    const savedTasks = localStorage.getItem('tasks');
+    return savedTasks ? JSON.parse(savedTasks) : [];
+  });
   const [countCompletedTasks, setCountCompletedTasks] = useState(0);
 
   function handleInputNewTaskChange(e: ChangeEvent<HTMLInputElement>) {
@@ -61,6 +64,10 @@ export function App() {
 
     setCountCompletedTasks(newTasks.filter((task) => task.isChecked).length);
   }
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
 
   return (
     <div>
